@@ -1,0 +1,4 @@
+rm -r SmallestPath.dat
+
+
+
