@@ -44,9 +44,9 @@ _/    _/  _/_/_/  _/_/_/_/ email: Davide.Galli@unimi.it
      	input.close();
       } else cerr << "PROBLEM: Unable to open seed.in" << endl;
    rnd.SaveSeed();
-   int M=1E4;	//n.totale di esperimenti
-   int N=1E2;	//n. blocchi
-   int dim=3;	//n.esperimenti in ogni blocco
+   int M=1E4;	//n.totale di random walk
+   int N=1E2;	//n. di step per ogni random walk M
+   int dim=3;
    VettoreDati posizione_d(dim),ave_dist(N),ave2_dist(N),dist(N),dist2(N),err_dist(N),sum_prog(N),sum2_prog(N);
    int dir;  
    double sum=0.;
@@ -60,10 +60,10 @@ _/    _/  _/_/_/  _/_/_/_/ email: Davide.Galli@unimi.it
 	  else 
 	      posizione_d.SetComponent(dir,posizione_d.GetComponent(dir)-1);
           for (int h=0;h<dim;h++){
-              sum+=sqrt(pow(posizione_d.GetComponent(h),2));
+              sum+=sqrt(pow(posizione_d.GetComponent(h),2));	//calcolo le distanze dall'origine
               //cout << "sum " <<sum <<endl; 
           }
-          dist.SetComponent(j,dist.GetComponent(j)+sum);//sommo tutte le distanze
+          dist.SetComponent(j,dist.GetComponent(j)+sum);  //aggiungo al precedente random walk
           Esempio << posizione_d.GetComponent(0) << " " << posizione_d.GetComponent(1) << " " << posizione_d.GetComponent(2) << endl;
 	}
    }
